@@ -23,10 +23,8 @@
     <section class ="list">
       <form class="" action="/completed" method="post">
         {{#incomplete}}
-
-        <span>{{task}}</span><button type="submit" name="completed" value="{{id}}">Mark Complete!</button><br>
-
-
+        <span>{{task}}</span><button type="submit" name="completed" value="{{id}}">Mark Complete!</button>
+        <br>
         {{/incomplete}}
       </form>
     </section>
@@ -35,9 +33,11 @@
 
       <section class="completed">
         <h2>Completed Tasks</h2>
-        <ol>
-          {{#complete}}<li>{{.}}</li>{{/complete}}
-        </ol>
+        <form class="" action="/delete" method="post">
+          {{#incomplete}}
+          <button type="submit" name="id" value="{{id}}">Delete Task</button><span> {{task}}</span><br>
+          {{/incomplete}}
+        </form>
       </section>
 
 
