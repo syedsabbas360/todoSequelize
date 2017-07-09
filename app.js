@@ -38,17 +38,17 @@ app.get('/', function(request, response) {
       ]
     })
     .then(function(todos) {
-      console.log(todos)
+      // console.log(todos)
       for (let i = 0; i < todos.length; i++) {
-        if (todos[i].complete === true) {
-          complete.push(todos[i])
-        } else {
+        if (todos[i].complete === false) {
           incomplete.push(todos[i])
+        }else{
+          complete.push(todos[i])
         }
       }
     })
     .then(function() {
-      console.log(incomplete)
+      // console.log(incomplete)
       response.render('index', {
         pageTitle: 'To Do List',
         incomplete: incomplete,
@@ -69,28 +69,28 @@ app.post('/', function(request, response) {
     })
 });
 
-app.post('/completed', function(request, response)
-  {
+//now write a conditional where when the user clicks 'mark complete' then check if the value is 'false'. If it is, change complete's value to TRUE - THEN destroy the task if it meets our conditional'
+app.post('/completed', function(request, response) {
+
   models.todolist.update({
       complete: true
-    },
-    {
-        where: {
-          id: request.body.id
-        }
+    }, {
+      where: {
+        id: request.body.completed
+      }
     })
     .then(function() {
-      response.redirect('/')
+      return response.redirect('/')
     })
 });
 
-app.post('/delete', function(request, response){
+app.post('/delete', function(request, response) {
   models.todolist.destroy({
-    where: {
-      id: request.body.id
-    }
-  })
-  .then(function(){
-    response.redirect('/')
-  })
+      where: {
+        id: request.body.id
+      }
+    })
+    .then(function() {
+      return response.redirect('/')
+    })
 })

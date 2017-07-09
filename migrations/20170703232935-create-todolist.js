@@ -25,6 +25,13 @@ module.exports = {
     });
   },
   down: function(queryInterface, Sequelize) {
-    return queryInterface.dropTable('todolists');
+    queryInterface.removeColumn(
+      'todolists',
+      'complete'
+    )
+
+    // return queryInterface.dropTable('todolists');
+
+
   }
 };
