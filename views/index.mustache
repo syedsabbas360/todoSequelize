@@ -3,19 +3,20 @@
   <head>
     <meta charset="utf-8">
     <title>{{pageTitle}}</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+
   </head>
   <body>
-    <header>
-      <h1>To Do List!<h1>
-    </header>
 
-  <div class = "container">
+  <div class="jumbotron" style = "text-align: center">
+    <header class= 'title'>
+      <h1>To Do List!</h1>
+    </header>
 
     <section class = "todo">
       <form class="" action="/" method="post">
         <input type="text" name="todos" value="" placeholder="Add a todo...">
-        <button type="submit">Add todo!</button>
+        <button type="submit" class='btn btn btn-primary'>Add todo!</button>
       </form>
     </section>
 
@@ -35,7 +36,8 @@
         <h2>Completed Tasks</h2>
         <form class="" action="/delete" method="post">
           {{#complete}}
-          <button type="submit" name="id" value="{{id}}">Delete Task</button><span> {{task}}</span><br>
+          <button id='completed-task' type="submit" name="id"
+            class='btn btn btn-primary' value="{{id}}">Delete Task</button><span> {{task}}</span><br>
           {{/complete}}
         </form>
       </section>
